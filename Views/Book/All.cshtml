@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "All";
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+
+<h1>Book Inventory</h1>
+<br />
+<br />
+<br />
+<a asp-controller="Book" asp-action="Create" class='btn btn-primary text-white' style='cursor:pointer; width:70px;'>
+    Create
+</a>
+<br />
+<br />
+<br />
+<br />
+<table id="BookList" class="display" width="100%">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <td>✏</td>
+            <th>❌</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+
+            <tr>
+                <td width="30%">@book.BookName</td>
+                <td width="30%">@book.Author</td>
+                <td width="30%">@book.ISBN</td>
+                <td>
+                    <div class="text-center">
+                        <a asp-controller="Book" asp-action="Create" asp-route-id="@book.BookID" class='btn btn-success text-white' style='cursor:pointer; width:70px;'>
+                            Edit
+                        </a>
+
+                    </div>
+                </td>
+                <td>
+                    <a class='btn btn-danger text-white' style='cursor:pointer; width:70px;'>
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#BookList").DataTable();
+            //GetEmployeeRecord();
+        })
+    </script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+}
+
+
+
+
+

@@ -1,0 +1,38 @@
+﻿@model BookBorrow.Models.Book
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form asp-controller="Book" asp-action="Create"
+      method="post" class="mt-3">
+    <div class="form-group row">
+        <label asp-for="BookName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="BookName" class="form-control" placeholder="Book Name">
+            <span asp-validation-for="BookName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Author" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Author" class="form-control" placeholder="Author Name">
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="ISBN" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="ISBN" class="form-control" placeholder="ISBN No">
+            <span asp-validation-for="ISBN" class="text-danger"></span>
+        </div>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</form>
+
