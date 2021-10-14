@@ -22,5 +22,6 @@ namespace BookBorrow.Models
 
         }
         public DbSet<Book> Book { get; set; }
+        public DbSet<Member> Member { get; set; }
     }
 }

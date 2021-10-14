@@ -1,5 +1,6 @@
 using BookBorrow.Models;
 using BookBorrow.Models.Interface;
+using BookBorrow.Models.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace BookBorrow
             services.AddDbContext<AppDBContext>(c => c.UseSqlServer(connectionString));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
             services.AddScoped<IBook, SQLBookRepo>();
+            services.AddScoped<IMember, SQLMemberRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

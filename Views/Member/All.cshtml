@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Member>
+@{
+    ViewData["Title"] = "All";
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+
+<h1>Book Inventory</h1>
+<br />
+<br />
+<br />
+<a asp-controller="Member" asp-action="Create" class='btn btn-primary text-white' style='cursor:pointer; width:70px;'>
+    Create
+</a>
+<br />
+<br />
+<br />
+<br />
+<table id="BookList" class="display" width="100%">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>MobileNumber</th>
+            <th>Pincode</th>
+            <th>City</th>
+            <th>State</th>
+            <th>DOB</th>
+            <td>✏</td>
+            <th>❌</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+
+        <tr>
+            <td width="30%">@member.MemberName</td>
+            <td width="30%">@member.Email</td>
+            <td width="30%">@member.MobileNumber</td>
+            <td width="30%">@member.Pincode</td>
+            <td width="30%">@member.City</td>
+            <td width="30%">@member.State</td>
+            <td width="30%">@member.DOB</td>
+            <td>
+                <div class="text-center">
+                    <a asp-controller="Member" asp-action="Create" asp-route-id="@member.MemberId" class='btn btn-success text-white' style='cursor:pointer; width:70px;'>
+                        Edit
+                    </a>
+
+                </div>
+            </td>
+            <td>
+                <form asp-controller="Member" asp-action="Delete" asp-route-value="@member.MemberId">
+
+
+                    <button type="submit" class='btn btn-danger text-white' style='cursor:pointer; width:70px;'>
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#BookList").DataTable();
+            //GetEmployeeRecord();
+        })
+    </script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+}
+
+
+
+
+

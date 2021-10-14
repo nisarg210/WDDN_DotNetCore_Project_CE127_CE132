@@ -51,5 +51,19 @@ namespace BookBorrow.Controllers
             return RedirectToAction("All");
             
         }
+        [HttpPost]
+        public IActionResult Update(Book book, int value)
+        {
+            _bookRepo.Update(book);
+            var m = _bookRepo.GetBook(value);
+            return RedirectToAction("All");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int value)
+        {
+            _bookRepo.Delete(value);
+            return RedirectToAction("All");
+        }
     }
 }

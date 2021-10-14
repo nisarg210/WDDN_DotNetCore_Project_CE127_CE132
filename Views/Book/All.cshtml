@@ -46,9 +46,13 @@
                     </div>
                 </td>
                 <td>
-                    <a class='btn btn-danger text-white' style='cursor:pointer; width:70px;'>
-                        Delete
-                    </a>
+                    <form asp-controller="Book" asp-action="Delete" asp-route-value="@book.BookID">
+
+
+                        <button type="submit" class='btn btn-danger text-white' style='cursor:pointer; width:70px;'>
+                            Delete
+                        </button>
+                    </form>
                 </td>
             </tr>
         }
