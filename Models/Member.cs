@@ -19,5 +19,6 @@ namespace BookBorrow.Models
         public string City { get; set; }
         public string State { get; set; }
 
+        public List<BookIssue> BookIssue { get; set; }
     }
 }

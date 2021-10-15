@@ -13,5 +13,6 @@ namespace BookBorrow.Models
         public string BookName { get; set; }
         public string Author { get; set; }
         public int ISBN { get; set; }
+        public List<BookIssue> BookIssue { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using BookBorrow.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookBorrow.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211015083828_bookissue-manytomany")]
+    partial class bookissuemanytomany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,20 +52,8 @@ namespace BookBorrow.Migrations
                     b.Property<int>("BookID")
                         .HasColumnType("int");
 
-                    b.Property<string>("BookName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("End")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("MemberId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Start")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

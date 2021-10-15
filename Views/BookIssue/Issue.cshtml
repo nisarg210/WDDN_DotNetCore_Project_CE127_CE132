@@ -1,0 +1,107 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "Issue";
+}
+
+   
+<h1>Issue</h1>
+
+
+<form class="mt-3" asp-controller="BookIssue" asp-action="Add">
+
+    
+    <div class="container">
+        <div class="row align-items-stretch no-gutters contact-wrap">
+
+            <div class="col-md-6">
+                <div class="form h-100">
+                    <h3>Details</h3>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-5">
+                            <input name="mid" class="form-control" placeholder="Member ID" id="MemberId" />
+                        </div>
+                        <div class="col-md-6 form-group mb-5">
+                            <select name="dp" class="form-control" asp-items="@(new SelectList(@Model.Blist,"BookID","BookName"))"></select>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6 form-group mb-5">
+                            <input name="s" type="date" class="form-control" placeholder="Start Date" ID="StartDateTextBox" runat="server" />
+
+                        </div>
+                        <div class="col-md-6 form-group mb-5">
+
+                            <input name="e" type="date" class="form-control" placeholder="End Date" ID="EndDateTextBox" runat="server" />
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <button class="btn btn-primary rounded-0 py-2 px-4" ID="IssueButton" runat="server" Text="Issue" OnClick="IssueButton_Click">Issue</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="contact-info h-100" style="background-image: url('../Images/lib3.jpg')">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+<div class="container">
+    <table id="BookList" class="display" width="100%">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Book</th>
+                <th>Start</th>
+                <td>End</td>
+                <th>❌</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BookIssue book in @Model.IssueList)
+            {
+
+            <tr>
+                <td width="30%">@book.Name</td>
+                <td width="30%">@book.BookName</td>
+                <td width="30%">@book.Start</td>
+                <td width="30%">@book.End</td>
+                <td>
+                    <form asp-controller="BookIssue" asp-action="Return" asp-route-value="@book.Id">
+
+
+                        <button type="submit" class='btn btn-danger text-white' style='cursor:pointer; width:70px;'>
+                            Return
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $("#BookList").DataTable();
+                //GetEmployeeRecord();
+            })
+        </script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    }
+</div>
+
+   

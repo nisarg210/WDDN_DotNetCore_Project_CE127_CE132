@@ -16,6 +16,11 @@ namespace BookBorrow.Controllers
         {
             _memberRepo = memberRepo;
         }
+        public ViewResult Memberlist()
+        {
+            var model = _memberRepo.GetAllMembers();
+            return View(model);
+        }
         public IActionResult Index()
         {
             return View();
