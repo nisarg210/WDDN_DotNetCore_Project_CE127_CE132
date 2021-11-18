@@ -50,7 +50,7 @@ namespace BookBorrow.Controllers
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    return RedirectToAction("index", "Home");
+                    return RedirectToAction("Dashboard","Home");
                 }
 
                 foreach (var error in result.Errors)
@@ -80,7 +80,7 @@ namespace BookBorrow.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Dashboard", "Home");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
